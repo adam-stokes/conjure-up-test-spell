@@ -1,0 +1,21 @@
+title: Ghost blog URL
+description: Enter the URL of your blog
+viewable: True
+required: True
+additional-input:
+  - label: Blog URL
+    key: BLOGURL
+    type: text
+    default: http://localhost
+  - label: Second Blog URL
+    key: BLOGURL2
+    type: text
+    default: http://localhost
+  - label: Third Blog URL
+    key: BLOGURL3
+    type: text
+    default: http://localhost
+  - label: Fourth Blog URL
+    key: BLOGURL4
+    type: text
+    default: http://localhost

@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+from conjureup.hooklib.writer import success, fail, error
+from conjureup.utils import run
+from subprocess import CalledProcessError
+import logging
+import os
+
+log = logging.getLogger('conjureup')
+BLOGURL = os.environ.get('BLOGURL', None)
+BLOGURL2 = os.environ.get('BLOGURL2', None)
+BLOGURL3 = os.environ.get('BLOGURL3', None)
+BLOGURL4 = os.environ.get('BLOGURL4', None)
+
+if BLOGURL is not None:
+    log.debug(BLOGURL)
+    log.debug(BLOGURL2)
+    log.debug(BLOGURL3)
+    log.debug(BLOGURL4)
+    try:
+        run('juju-2.0 config ghost url={}'.format(BLOGURL),
+            shell=True, check=True)
+        success("Visit your Ghost application at {}".format(BLOGURL))
+    except CalledProcessError as e:
+        log.error(e)
+        error("Unable to set URL for ghost: ".format(e))
+else:
+    fail("Could not determine a BLOGURL to set")
